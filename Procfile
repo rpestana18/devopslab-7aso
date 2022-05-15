@@ -1,1 +1,1 @@
-web: gunicorn devopslab-rpestana:app
+web: gunicorn app:app
