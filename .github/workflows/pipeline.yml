@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
 
 jobs:
   Build:
@@ -26,21 +24,15 @@ jobs:
 
       - name: Install Requirements
         run:  pip install flask flask-wtf
-
-        name: Install tox and any other packages
-        run: pip install tox
       
-      - name: Run tox
-        run: tox -e py
+      - name: Unit Test
+        run: python -m unittest -v test
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Unit Test
-        run: python -m unittest -v test
 
   Deploy:
     needs: Build
