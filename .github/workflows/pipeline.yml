@@ -27,6 +27,10 @@ jobs:
 
       - name: Install tox and any other packages
         run: pip install tox
+
+      - name: Install tox and any other packages
+        run: pip install pytest-cov
+
       - name: Run tox
         run: tox -e py
       - name: SonarCloud Scan
