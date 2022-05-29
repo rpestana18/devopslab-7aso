@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from app import app3
+from app import app
 from flask_wtf.csrf import CSRFProtect
 import unittest
 
