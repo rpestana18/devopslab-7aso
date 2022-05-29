@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from app import app
-from flask_wtf.csrf import CSRFProtect
 import unittest
 
 class Test(unittest.TestCase):
@@ -10,9 +9,6 @@ class Test(unittest.TestCase):
 
         # envia uma requisicao GET para a URL
         self.result = self.app.get('/')
-
-    def test__CSRFProtect(self):
-        self.csrf = CSRFProtect(app.csrf)
 
     def test_requisicao(self):
         # compara o status da requisicao (precisa ser igual a 200)
