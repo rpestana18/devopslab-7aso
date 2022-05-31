@@ -24,12 +24,16 @@ jobs:
 
       - name: Install Requirements
         run:  pip install flask flask-wtf
+
+      - name: Install pytest-cov
+        run: pip install pytest-cov
               
       - name: Unit Test
         run: python -m unittest -v test
 
       - name: Install tox and any other packages
         run: pip install tox
+
       - name: Run tox
         run: tox -e py
 
