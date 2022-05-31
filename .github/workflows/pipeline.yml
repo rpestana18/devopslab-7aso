@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Requirements
         run:  pip install flask flask-wtf
-
+              
       - name: Unit Test
         run: python -m unittest -v test
 
@@ -33,8 +33,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
-
-
 
   Deploy:
     needs: Build
