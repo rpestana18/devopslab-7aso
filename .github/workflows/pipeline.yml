@@ -25,15 +25,14 @@ jobs:
       - name: Install Requirements
         run:  pip install flask flask-wtf
 
-      - name: Install pytest-cov
-        run: pip install pytest-cov
-              
-      - name: Unit Test
-        run: python -m unittest -v test
-
-      - name: Test with pytest
+      - name: Install dependencies
         run: |
-          pytest --cov=./ --cov-report=xml
+        python -m pip install --upgrade pip
+        pip install pylint pytest pytest-cov selenium playwright
+      
+      - name: Running pytest
+        run: |
+        pytest -v  --cov --cov-report=xml --cov-report=html
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
